@@ -1,0 +1,31 @@
+---
+language: ruby
+
+rvm:
+  - 2.1.1
+
+notifications:
+  email: false
+
+script:
+    - bundle exec middleman build
+
+env:
+  global:
+    - GIT_COMMITTER_NAME=kazu69
+    - GIT_COMMITTER_EMAIL=kazu69web+github@gmail.com
+    - GIT_AUTHOR_NAME=kazu69
+    - GIT_AUTHOR_EMAIL=kazu69web+github@gmail.com
+    - secure: CKMZ/sOXZakeTw4AazMx7Ru/Jt21WFSIR4iFqi4vq7i8JZksfRipy5RTScSf2a/S+Xmf1UM2crhWshjBlPEO1+I12B8PY5E1az29ZaJShgREWzIgEq2YSaNz8w1PdrdzT4nZl5nO36b8wo3ptgc+reAChaGHup/JMek/9usTC80=
+
+before_script:
+  - git clone --quiet https://github.com/kazu69/middleman-blog.git build
+  - pushd build
+  - git checkout -b gh-pages
+  - popd
+
+after_success:
+  - cd build
+  - git add -A
+  - git commit -m 'Update'
+  - '[ "$TRAVIS_BRANCH" == "master" ] && [ $GH_TOKEN ] && git push -f --quiet https://$GH_TOKEN@github.com/kazu69/middleman-blog.git gh-pages 2> /dev/null'

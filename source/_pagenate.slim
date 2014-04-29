@@ -1,0 +1,13 @@
+- if paginate
+  .pagenate
+    - if num_pages > 1
+      .pagenate__pagenumber
+        span Page #{page_number} / #{num_pages}
+
+    .pagenate__item
+      - if prev_page
+        .pagenate__prevpage
+          = link_to 'prev', prev_page, relative: true
+      - if next_page
+        .pagenate__nextpage
+          = link_to 'next', next_page, relative: true

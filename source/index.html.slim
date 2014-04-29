@@ -1,0 +1,23 @@
+---
+pageable: true
+per_page: 10
+---
+
+- page_articles.each_with_index do |article, i|
+  article.post
+    h1.post__title
+      = link_to article.title, article, relative:true
+    time.post__time date-time="#{article.date.strftime('%Y-%m-%d %H:%M:%S')}"
+      = article.date.strftime('%Y-%m-%d')
+    .post__summary
+      = article.summary
+    .post__link
+      = link_to 'Read more', article
+
+= partial :pagenate, locals: { \
+  paginate: paginate,\
+  next_page: next_page,\
+  prev_page: prev_page,\
+  num_pages: num_pages,\
+  page_number: page_number\
+}

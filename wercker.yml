@@ -1,0 +1,29 @@
+box: wercker/rvm
+build:
+    steps:
+        - bundle-install
+
+        - npm-install
+        - script:
+            name: run bower install
+            code: bower install
+        - script:
+            name: middleman build
+            code: bundle exec middleman build --verbose
+
+deploy :
+  steps :
+    - script:
+        name: Configure git
+        code: |-
+          git config --global user.email "kazu69web+werker@gmail.com"
+          git config --global user.name "wercker"
+          rm -rf .git
+    - script:
+        name: Deploy to github pages
+        code: |-
+          cd build
+          git init
+          git add -A
+          git commit -m "update"
+          git push -f $GIT_REMOTE master:gh-pages

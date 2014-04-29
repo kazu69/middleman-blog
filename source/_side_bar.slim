@@ -1,0 +1,24 @@
+aside.side_bar
+  .side_bar_wrapper
+    .side_bar__content.articles
+      h2.side_bar__title Recent Articles
+      ul.side_bar__list
+        - blog.articles[0...10].each do |article|
+          li.side_bar__item
+            = link_to article.title, article, class: 'side_bar__item_link', relative: true
+
+    .side_bar__content.tags
+      h2.side_bar__title Tags
+      ul.side_bar__list
+        - blog.tags.each do |tag, articles|
+          li.side_bar__item
+            = link_to tag, tag_path(tag), class: 'side_bar__item_link', relative: true
+            span.size = "(#{articles.size})"
+
+    .side_bar__content.date_lists
+      h2.side_bar__title Archives
+      ul.side_bar__list
+        - blog.articles.group_by {|a| a.date.year }.each do |year, articles|
+          li.side_bar__item
+            = link_to year, blog_year_path(year), class: 'side_bar__item_link', relative: true
+            span.size = "(#{articles.size})"

@@ -1,0 +1,228 @@
+//
+// Main Stylesheet
+//
+@import 'compass'
+@import 'blend-modes'
+@import 'h5bp'
+@import 'config'
+
+// HTML5 Boilerplate Styles
+@include h5bp-normalize
+@include h5bp-base-styles
+
+// HTML5 Boilerplate styling for Chrome Frame
+@include h5bp-chromeframe
+
+// Susy Grid Systems - choose one to customize
+@import 'grid/magic'
+
+// import mixin
+@import 'mixin/rem'
+
+%link-button
+  @include rem(padding, 6 8)
+  @include rem(font-size, 9)
+  @include rem(line-height, 12)
+  transition-property: color
+  transition-duration: .2s
+  display: inline-block
+  border-radius: 20px
+  color: #999
+  border: 1px solid darken($border-base-color, 6%)
+  &:hover
+    box-hsadow: 0 0 2px #333
+    box-shadow: 0 1px 0 #fff inset
+    color: darken(#999, 3%)
+    border-color: darken($border-base-color, 12%)
+    background-color: lighten($background-base-color, .5%)
+
+// Your own styles go here.
+html
+  // Sets up the Base 10 stuff
+  font-size: 100%
+body
+  @include rem(font-size, 12)
+  background-color: $background-base-color
+  color: $font-base-color
+  font-family: $font-family
+
+h2
+  @include rem(font-size, 13)
+a
+  color: $anchor-base-color
+  text-decoration: none
+
+.blog-head
+  background-color: $header-background-color
+  .blog-head__title
+    @include rem(font-size, 20)
+    @include rem(height, 120)
+    @include rem(line-height, 120)
+    @include rem(letter-spacing, 2)
+    box-shadow: 0 -1px 0 #fff inset
+    margin: 0
+    text-align: center
+    border-bottom: 1px solid lighten($border-base-color, 3%)
+    a
+      color: #FFF
+
+.container
+  img
+    max-width: 100%
+    height: auto
+  .main
+    @include pre(1)
+    @include post(1)
+    @include rem(margin-top, 35)
+
+  .post
+    @include rem(margin-bottom, 35)
+    @include rem(padding, 0 10 30)
+    box-shadow: 0 -1px 0 #FFF inset
+    border-bottom: 1px solid $border-base-color
+    &:last-child
+      @include rem(margin-bottom, 15)
+      border-bottom: none
+
+    h1, h2, h3, h4, h5, h6
+      @include rem(font-size, 14)
+      @include rem(margin, 40 0 10)
+      font-weight: 700
+
+    p
+      @include rem(margin, 8 0)
+
+    .post__title
+      @include rem(font-size, 13)
+      @include rem(margin, 15 0 5)
+      a
+        transition-property: color
+        transition-duration: .2s
+        color: $headline-font-color
+        display: inline-block
+        &:hover
+          color: $anchor-base-color
+
+    .post__time
+      @include rem(font-size, 8)
+      color: #ccc
+
+    .post__content,
+      @include rem(margin-top, 35)
+
+    .post__summary
+      @include rem(margin-top, 20)
+      color: $article-font-color
+
+
+    .post__summary,
+    .post__content
+      @include rem(font-size, 10)
+      line-height: 1.4
+
+    .post__link
+      @include rem(margin-top, 16)
+      text-align: right
+      a
+        @extend %link-button
+
+  .pagenate
+    .pagenate__pagenumber
+      text-align: right
+      span
+        @include rem(font-size, 8)
+        color: #999
+    .pagenate__item
+      @include rem(margin, 15 0)
+      text-align: center
+      overflow: hidden
+    .pagenate__prevpage,
+    .pagenate__nextpage,
+    .pagenate__index,
+      @include rem(padding, 10)
+      display: inline-block
+      a
+        @extend %link-button
+        @include rem(min-width, 80)
+
+      .pagenate__prevpage
+        float: left
+      .pagenate__nextpage
+        float: right
+
+  .main__content
+    .post__title
+      @include rem(font-size, 15)
+    .post__content
+      a[href]
+        @include rem(padding, 0 3)
+        display: inline-block
+
+.highlight
+  @include rem(padding, 10)
+  border: 1px solid darken($border-base-color, 6%)
+  background-color: darken($border-base-color, 2%)
+  border-radius: 2px
+
+.side_bar
+  background-color: $footer-background-color
+  border-top: 1px solid $border-base-color
+  margin: 0 auto
+  .side_bar_wrapper
+    @include rem(padding, 10)
+    display: box
+    box-pack: center
+  .side_bar__content
+    @include rem(margin, 0 5)
+    > div
+      text-overflow: ellipsis
+      overflow: auto
+      white-space: nowrap
+  .articles
+    width: 500px
+  .tags
+    width: 150px
+  .date_lists
+    width: 120px
+  .side_bar__list
+    margin: 0
+    padding: 0
+  .side_bar__title
+    @include rem(font-size, 10)
+    color: #FFF
+  .side_bar__item
+    @include rem(font-size, 9)
+    color: lighten($article-font-color, 20%)
+    list-style: none
+    line-height: 2
+    .size
+      @include rem(margin-left, 3)
+      display: inline-block
+  .side_bar__item_link
+    color: lighten($article-font-color, 20%)
+    transition-property: color
+    transition-duration: .2s
+    &:hover
+      color: lighten($article-font-color, 30%)
+
+
+footer
+  @include rem(padding, 12 16)
+  border-top: 1px solid darken($footer-background-color, 3%)
+  background-color: darken($footer-background-color, 2%)
+  text-align: right
+  .copyright
+    color: darken($border-base-color, 16%)
+    text-align: center
+    small
+      @include rem(font-size, 9)
+      @include rem(line-height, 14)
+      display: inline-block
+
+
+
+// H5BP helper classes & mixins.
+// @include h5bp-helpers
+
+// Print styles.
+@include h5bp-media

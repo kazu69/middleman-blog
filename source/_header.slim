@@ -1,0 +1,6 @@
+header.blog-head
+  - if page == 'index'
+    h1.blog-head__title.tk-cubano
+      = link_to "#{I18n.t(:title)}", '/'
+  - else
+    h1 = current_page.data.title

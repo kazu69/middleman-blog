@@ -1,0 +1,25 @@
+@mixin rem( $attribute: font-size, $sizeValue: 1.6)
+  @if $attribute == font-size
+    #{$attribute}: ($sizeValue * 1) + px
+    #{$attribute}: ($sizeValue / 10) + rem
+    line-height: ($sizeValue * 1) + px
+    line-height: ($sizeValue / 10) + rem
+  @else
+    @if type-of($sizeValue) == list
+      $px:()
+      $rem:()
+      @each $value in $sizeValue
+        @if $value == 'auto'
+          $px: append($px, $value)
+          $rem: append($rem, $value)
+        @else
+          $px: append($px, #{($value * 1) + px})
+          $rem: append($rem, #{($value / 10) + rem})
+
+      #{$attribute}: $px
+      #{$attribute}: $rem
+
+      // append(10px 20px, 30px) => 10px 20px 30px
+    @else
+      #{$attribute}: ($sizeValue * 1) + px
+      #{$attribute}: ($sizeValue / 10) + rem

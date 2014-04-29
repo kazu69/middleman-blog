@@ -1,0 +1,14 @@
+- wrap_layout :layout do
+  .container
+    section.main
+      .main__content role="main"
+        article.post
+          h1.post__title #{current_article.title}
+          time.post__time date-time="#{current_article.date.strftime('%Y-%m-%d %H:%M:%S')}"
+            = current_article.date.strftime('%Y-%m-%d')
+          .post__content
+            = yield
+        .pagenate
+          .pagenate__item
+            .pagenate__index
+              = link_to 'index', '/'

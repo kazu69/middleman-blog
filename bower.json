@@ -1,0 +1,20 @@
+{
+  "name": "middleman-blog",
+  "version": "0.0.1",
+  "homepage": "https://kazu69.github.io/middleman-blog",
+  "authors": [
+    "kazu69"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "1.11.0",
+    "trianglify": "~0.1.2"
+  }
+}

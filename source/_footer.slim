@@ -1,0 +1,11 @@
+footer
+  .copyright
+    small
+      span &copy; #{I18n.t(:author)}
+
+= javascript_include_tag "//use.typekit.net/ixe7nsf.js"
+javascript:
+  try{Typekit.load();}catch(e){}
+
+= javascript_include_tag "script", "plugins"
+= javascript_include_tag "http://d3js.org/d3.v3.min.js"
