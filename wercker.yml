@@ -1,12 +1,18 @@
-box: wercker/rvm
+box: wercker/ubuntu12.04-nodejs0.10
 build:
     steps:
         - bundle-install
 
         - npm-install
+
+        - script:
+            name: install bower
+            code: sudo npm install -g bower
+
         - script:
             name: run bower install
             code: bower install
+
         - script:
             name: middleman build
             code: bundle exec middleman build --verbose
