@@ -1,4 +1,4 @@
-# middleman-blog [![Build Status](https://travis-ci.org/kazu69/middleman-blog.png?branch=master)](https://travis-ci.org/kazu69/middleman-blog)
+# middleman-blog [![wercker status](https://app.wercker.com/status/debd866d21cd2dd2748ebf525582cef0/m/ "wercker status")](https://app.wercker.com/project/bykey/debd866d21cd2dd2748ebf525582cef0)
 
 ## Publish
 
